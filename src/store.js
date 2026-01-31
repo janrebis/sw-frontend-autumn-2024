@@ -1,20 +1,41 @@
-/* global process */
-import {combineSlices, configureStore} from '@reduxjs/toolkit';
-import {setupListeners} from '@reduxjs/toolkit/query';
-import logger from 'redux-logger';
-import {weatherSlice} from './slices/weatherSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import { weatherReducer } from "./slices/weatherSlice.js";
 
-const rootReducer = combineSlices(weatherSlice);
+const STORAGE_KEY = "weatherAppState_v1";
 
-const store = configureStore({
-    reducer: rootReducer,
-    middleware(getDefaultMiddleware) {
-        return process.env.NODE_ENV === 'development'
-            ? getDefaultMiddleware().concat(logger)
-            : getDefaultMiddleware();
-    },
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return undefined;
+    const parsed = JSON.parse(raw);
+    return parsed;
+  } catch {
+    return undefined;
+  }
+}
+
+function saveState(state) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch {
+  }
+}
+
+const preloadedState = loadState();
+
+export const store = configureStore({
+  reducer: {
+    weather: weatherReducer,
+  },
+  preloadedState,
 });
 
-setupListeners(store.dispatch);
-
-export {store};
+store.subscribe(() => {
+  const state = store.getState();
+  saveState({
+    weather: {
+      temperatureUnits: state.weather.temperatureUnits,
+      favorites: state.weather.favorites,
+    },
+  });
+});

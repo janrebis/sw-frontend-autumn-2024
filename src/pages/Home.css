@@ -1,3 +1,76 @@
-.header {
-    color: #097969;
+.home {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.home-title {
+  margin: 0 0 18px 0;
+  font-size: 22px;
+  letter-spacing: 0.2px;
+  text-align: center;
+}
+
+.search {
+  margin: 0 auto 18px auto;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.search-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  opacity: 0.85;
+  margin-bottom: 8px;
+}
+
+.search-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: rgba(0, 0, 0, 0.28);
+}
+
+.search-clear {
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: white;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.search-clear:hover {
+  transform: translateY(-1px);
+}
+
+.search-hint {
+  margin-top: 8px;
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.city-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }

@@ -1,0 +1,52 @@
+.unit-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.unit-label {
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.unit-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+/* HARD RESET na buttony */
+.unit-btn {
+  all: unset;                 /* usuwa WSZYSTKIE dziwne style */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 10px;
+  border-radius: 10px;
+
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.9);
+
+  font-size: 13px;
+  font-weight: 800;
+
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.unit-btn:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.unit-btn.active {
+  border-color: #000;
+  background: #fff;
+}
+
+.unit-btn:focus,
+.unit-btn:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
