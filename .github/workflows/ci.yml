@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  lint_build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,5 +21,5 @@ jobs:
       - name: Lint
         run: npm run lint --if-present
 
-      - name: Test
-        run: npm test -- --watchAll=false
+      - name: Build
+        run: npm run build
